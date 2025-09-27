@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+
+        {% if cluster is not none %}
+            <p>Based on the values you entered:</p>
+            <ul>
+                <li>Recency: {{ values[0] }}</li>
+                <li>Frequency: {{ values[1] }}</li>
+                <li>Monetary: {{ values[2] }}</li>
+            </ul>
+            <h2>Cluster Assigned: {{ cluster }}</h2>
+        {% endif %}
+
+        {% if table %}
+            <h2>CSV Results (first 5 rows)</h2>
+            {{ table | safe }}
+            <p>Full results saved as <b>uploaded_results.csv</b></p>
+        {% endif %}
+
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
